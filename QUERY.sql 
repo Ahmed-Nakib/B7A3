@@ -1,0 +1,24 @@
+-- =========================================================================
+-- SYSTEM: Football Ticket Booking System Database Setup
+-- DESCRIPTION: Complete SQL Schema with Constraints and Sample Data
+-- =========================================================================
+
+-- DROP TABLES IF THEY EXIST (SAFE RESET)
+DROP TABLE IF EXISTS Bookings;
+DROP TABLE IF EXISTS Matches;
+DROP TABLE IF EXISTS Users;
+
+-- =========================================================================
+-- 1. USERS TABLE
+-- =========================================================================
+CREATE TABLE Users (
+    user_id SERIAL,
+    full_name VARCHAR(255),
+    email VARCHAR(255),
+    role VARCHAR(50),
+    phone_number VARCHAR(15),
+
+    PRIMARY KEY (user_id),
+    UNIQUE (email),
+    CHECK (role IN ('Football Fan', 'Ticket Manager'))
+);
