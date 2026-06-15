@@ -1,9 +1,5 @@
 -- =========================================================================
 -- SYSTEM: Football Ticket Booking System Database Design & Implementation
--- AUTHOR: Student Submission
--- DATABASE: PostgreSQL
--- =========================================================================
-
 
 -- =========================================================================
 -- RESET DATABASE (SAFE DROP)
@@ -30,7 +26,7 @@ CREATE TABLE users (
 
 
 -- =========================================================================
--- 2. MATCHES TABLE
+-- 2. MATCHES TABLE (FIXED)
 -- =========================================================================
 
 CREATE TABLE matches (
@@ -41,7 +37,15 @@ CREATE TABLE matches (
     match_status VARCHAR(50),
 
     CHECK (base_ticket_price >= 0),
-    CHECK (match_status IN ('Available', 'Selling Fast', 'Sold Out'))
+
+    CHECK (
+        match_status IN (
+            'Available',
+            'Selling Fast',
+            'Sold Out',
+            'Postponed'
+        )
+    )
 );
 
 
